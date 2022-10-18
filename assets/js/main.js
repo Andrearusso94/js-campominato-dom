@@ -22,7 +22,7 @@ buttonGenerator.addEventListener("click", function(){
 //Ci saranno quindi 10 caselle per ognuna delle 10 righe.
 
 // creo ciclo for
-for (let i = 1; i <= numeroCaselle; i++){
+for (let i = 0; i <= numeroCaselle; i++){
     
     //aggiungo la casella al container
     const casella = `<div class="casella">${i}</div>`
@@ -39,7 +39,7 @@ for (let i = 1; i <= numeroCaselle; i++){
     //container.append(casella);
 }
 
-function GenerateBombs(min, max){
+function generateBombs(min, max){
     const bombs = []
     
    
@@ -56,17 +56,8 @@ function GenerateBombs(min, max){
     return bombs 
     
 }
-const bombs = GenerateBombs(1, 100)
+const bombs = generateBombs(1, 100)
 console.log(bombs)
-
-
-
-
-for(let a = 0; a < bombs.length; a++){
-      const arr = bombs[a]
-        console.log(arr)
-    }
-
 
 //In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - 
 //abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
@@ -74,24 +65,22 @@ for(let a = 0; a < bombs.length; a++){
 
 function generateRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+}
 
 // creo click per giocare
-for (let i = 1; i < listaCaselle.length; i++){
+for (let i = 0; i < listaCaselle.length; i++){
     let singolaCasella = listaCaselle[i]
     
-    
-
- 
     singolaCasella.addEventListener("click", function(){
 
-        if ( i !== arr){
-        singolaCasella.classList.add("blue")
-        //Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-        console.log(i)
-    } else {
-        singolaCasella.classList.add("red")
-    }
+        if (bombs.includes(i)){
+            
+            singolaCasella.classList.add("red")
+            //Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
+            console.log(i)
+        } else {
+            singolaCasella.classList.add("blue")
+        }
 
     })
 }
