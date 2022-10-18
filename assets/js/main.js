@@ -17,32 +17,6 @@ let listaCaselle = document.getElementsByClassName("casella")
 //L'utente clicca su un bottone che genererà una griglia di gioco quadrata. Ogni cella ha un numero progressivo, da 1 a 100.
 buttonGenerator.addEventListener("click", function(){
 
-function GenerateBombs(min, max){
-    const bombs = []
-    while (bombs.length !== 16){
-        //genero numero casuale
-        const bomb = generateRandomNumber(min, max)
-        //verifico se il numero è inserito nella lista delle bombe, altrimenti lo aggiungo e poi vado avanti
-
-        if (!bombs.includes(bomb)){
-            bombs.push(bomb)
-        }
-    }
-    return bombs
-}
-const bombs = GenerateBombs(1, 100)
-console.log(bombs)
-
-
-
-//In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - 
-//abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
-
-
-function generateRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
 
 
 //Ci saranno quindi 10 caselle per ognuna delle 10 righe.
@@ -65,15 +39,53 @@ for (let i = 1; i <= numeroCaselle; i++){
     //container.append(casella);
 }
 
+function GenerateBombs(min, max){
+    const bombs = []
+    
+   
+    while (bombs.length !== 16){
+        //genero numero casuale
+         const bomb = generateRandomNumber(min, max)
+        //verifico se il numero è inserito nella lista delle bombe, altrimenti lo aggiungo e poi vado avanti
+      // console.log(bomb)
+        if (!bombs.includes(bomb)){
+            bombs.push(bomb)
+        }
+        
+    } 
+    return bombs 
+    
+}
+const bombs = GenerateBombs(1, 100)
+console.log(bombs)
+
+
+
+
+for(let a = 0; a < bombs.length; a++){
+      const arr = bombs[a]
+        console.log(arr)
+    }
+
+
+//In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - 
+//abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
+
+
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 // creo click per giocare
 for (let i = 1; i < listaCaselle.length; i++){
     let singolaCasella = listaCaselle[i]
     
     
+
  
     singolaCasella.addEventListener("click", function(){
 
-        if ( i !== bombs){
+        if ( i !== arr){
         singolaCasella.classList.add("blue")
         //Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
         console.log(i)
@@ -86,7 +98,3 @@ for (let i = 1; i < listaCaselle.length; i++){
 
 
 })
-
-
-
-
