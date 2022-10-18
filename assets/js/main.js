@@ -1,8 +1,6 @@
 //Consegna
 
 
-
-
 //L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
 const buttonGenerator = document.getElementById("go");
 
@@ -56,4 +54,27 @@ for (let i = 1; i < listaCaselle.length; i++){
 
 
 })
+
+function GenerateBombs(min, max){
+    const bombs = []
+    while (bombs.length !== 16){
+        //genero numero casuale
+        const bomb = generateRandomNumber(min, max)
+        //verifico se il numero è inserito nella lista delle bombe, altrimenti lo aggiungo e poi vado avanti
+
+        if (!bombs.includes(bomb)){
+            bombs.push(bomb)
+        }
+    }
+    return bombs
+}
+const bombs = GenerateBombs(1, 100)
+console.log(bombs)
+
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+
+
 
