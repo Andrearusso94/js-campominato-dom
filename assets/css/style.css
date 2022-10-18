@@ -13,7 +13,7 @@ body{
     margin: 1.5rem auto;
     display: flex;
     flex-wrap: wrap;
-    background-color: brown;
+    background-color: green;
    
 
 }
@@ -33,4 +33,7 @@ button{
 
 .blue{
     background-color: blue;
+}
+.red{
+    background-color: red;
 }
